@@ -12,27 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('flies', function (Blueprint $table) {
-            $table->id();
+            $table->string('codefly')->primary();
             $table->string('codvuelo');
             $table->string('coddestino');
             $table->string('salaabordaje');
             $table->string('horasalida');
             $table->string('horallegada');
 
-            //referencia fly
-            $table->foreignId('passenger_id')->references('id')->on('passengers');
-
-            //referencia destination
-            $table->foreignId('destination_id')->references('id')->on('destinations');
-
-            //referencia airline
-            $table->foreignId('airline_id')->references('id')->on('airlines');
+            $table->string('codedestination');
+            $table->foreign('codedestination')->references('codedestination')->on('destinations')->onDelete('cascade');
 
 
+            $table->string('codeairline');
+            $table->foreign('codeairline')->references('codeairline')->on('airlines')->onDelete('cascade');
 
             $table->string('photo');
             $table->timestamps();
         });
+
     }
 
     /**

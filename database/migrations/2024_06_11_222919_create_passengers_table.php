@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
 
-            //referencia fly
-            //$table->foreignId('fly_id')->references('id')->on('flies');
-
-            
+            $table->string('codefly');
+            $table->foreign('codefly')->references('codefly')->on('flies')->onDelete('cascade');
 
             $table->string('photo');
             $table->timestamps();
