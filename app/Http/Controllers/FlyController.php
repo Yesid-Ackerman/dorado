@@ -18,9 +18,9 @@ class FlyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function asociar()
     {
-        //
+        return view('vuelos.create');
     }
 
     /**
@@ -28,7 +28,15 @@ class FlyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fly = new Fly();
+        $fly -> codefly = $request -> codefly;
+        // $fly -> codedestination = $request -> codedestination;
+        // $fly -> codeairline = $request ->codeairline;
+        $fly -> salaabordaje = $request -> salaabordaje;
+        $fly -> horasalida = $request -> horasalida;
+        $fly -> horallegada = $request -> horallegada;
+        $fly -> save();
+        return $request;
     }
 
     /**

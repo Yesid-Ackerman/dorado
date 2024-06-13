@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Destination extends Model
 {
+    // protected $primarykey = codedestination;
     use HasFactory;
 }
