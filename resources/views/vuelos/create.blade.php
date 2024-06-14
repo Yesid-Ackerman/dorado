@@ -14,7 +14,6 @@
 
         <h1>Codigo de Vuelo</h1>
         <input type="number" name="codefly">
-
         <h1>Destino:</h1>
         <select name="codedestination">
             @foreach($destinations as $destination)
