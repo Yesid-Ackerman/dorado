@@ -15,13 +15,13 @@
         <h1>Destino:</h1>
         <select name="codedestination">
             @foreach($destinations as $destination)
-                <option value="{{ $destination->codedestination }}">{{ $destination->codedestination }} - {{ $destination->desc }}</option>
+                <option value="{{ $destination->codedestination }}">{{ $destination->desc }}</option>
             @endforeach
         </select>
         <h1>Aerolinea</h1> 
         <select name="codeairline">
             @foreach($airlines as $airline)
-                <option value="{{ $airline->codeairline }}">{{ $airline->codeairline }} - {{ $airline->desc }}</option>
+                <option value="{{ $airline->codeairline }}">{{ $airline->desc }}</option>
             @endforeach
         </select>
 
