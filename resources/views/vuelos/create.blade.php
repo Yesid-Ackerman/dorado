@@ -12,15 +12,13 @@
         @csrf
         <h1>FORMULARIO VUELO</h1>
 
-        <h1>Codigo de Vuelo</h1>
-        <input type="number" name="codefly">
         <h1>Destino:</h1>
         <select name="codedestination">
             @foreach($destinations as $destination)
                 <option value="{{ $destination->codedestination }}">{{ $destination->codedestination }} - {{ $destination->desc }}</option>
             @endforeach
         </select>
-        <h1>Aerolinea</h1>
+        <h1>Aerolinea</h1> 
         <select name="codeairline">
             @foreach($airlines as $airline)
                 <option value="{{ $airline->codeairline }}">{{ $airline->codeairline }} - {{ $airline->desc }}</option>
