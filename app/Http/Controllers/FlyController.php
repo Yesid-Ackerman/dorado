@@ -15,7 +15,7 @@ class FlyController extends Controller
      */
     public function index()
     {
-        $flies = Fly::orderBy('codefly', 'desc')->get();
+        $flies = Fly::with('airline','destination')->orderBy('codefly', 'desc')->get();
         return view('vuelos.listar', compact('flies'));
     }
 
@@ -28,7 +28,7 @@ class FlyController extends Controller
         $flies = Fly::all();
         $passengers = Passenger::all();
         $airlines = Airline::all();
-        return view('vuelos.create',['destinations'=>$destinations,'airlines'=>$airlines]) ;
+        return view('vuelos.create',['destinations'=>$destinations,'airlines'=>$airlines,'flies'=>$flies]) ;
         
     }
 
@@ -59,8 +59,9 @@ class FlyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fly $fly)
+    public function show(Fly $flie)
     {
+
         return view('vuelos.show',compact('flie'));
     }
 

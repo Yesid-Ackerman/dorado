@@ -27,15 +27,15 @@
                 @foreach ($flies as $flie)
                     <tr>
                         <td>{{$flie->codefly}}</td>
-                        <td>{{$flie->codedestination}}</td>
-                        <td>{{$flie->codeairline}}</td>
+                        <td>{{$flie->destination->desc}}</td>
+                        <td>{{$flie->airline->desc}}</td>
                         <td>{{$flie->salaabordaje}}</td>
                         <td>{{$flie->horasalida}}</td>
                         <td>{{$flie->horallegada}}</td>
                         <td>
                             <a href="{{route('fly.show',$flie->codefly)}}" class="action-button" title="Mostrar">
                                 {{-- <i class="fas fa-eye"></i> --}}
-                                <input type="button">Mt
+                                <input type="button" value="Mostrar">
                             </a>
                         </td>
                         <td>

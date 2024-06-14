@@ -12,7 +12,8 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        //
+        $destin = Destination::orderBy('codefly', 'desc')->get();
+        return view('vuelos.listar', compact('destins'));
     }
 
     /**
@@ -28,7 +29,10 @@ class DestinationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dest = New Destination();
+        $dest -> codedestination = $request->codedestination;
+        $dest -> desc = $request->desc;
+        $dest -> save();
     }
 
     /**
@@ -36,7 +40,7 @@ class DestinationController extends Controller
      */
     public function show(Destination $destination)
     {
-        //
+        return view('vuelos.show', compact('destination'));
     }
 
     /**
