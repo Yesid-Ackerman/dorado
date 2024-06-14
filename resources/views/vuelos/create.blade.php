@@ -4,10 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>Document</title>
+    <title>Registro de Vuelo</title>
 </head>
 <body>
-    <H1 class="text-red">HOLA DESDE CREATE</H1>
     <form action="{{ route('fly.Store') }}" method="POST">
         @csrf
         <h1>FORMULARIO VUELO</h1>

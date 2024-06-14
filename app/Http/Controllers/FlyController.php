@@ -15,7 +15,8 @@ class FlyController extends Controller
      */
     public function index()
     {
-        //
+        $flies = Fly::orderBy('codefly', 'desc')->get();
+        return view('vuelos.listar', compact('flies'));
     }
 
     /**
@@ -60,7 +61,7 @@ class FlyController extends Controller
      */
     public function show(Fly $fly)
     {
-        //
+        return view('vuelos.show',compact('flie'));
     }
 
     /**

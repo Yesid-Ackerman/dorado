@@ -10,7 +10,5 @@ Route::get('/', function () {
 
 Route::get('create/fly',[FlyController::class,'asociar']);
 Route::post('fly/store', [FlyController::class,'store'])->name('fly.Store');
-
-
-// Route::get('create/pass',[PassengerController::class,'create']);
-// Route::post('pass/store',[PassengerController::class, 'store'])->name('fly.Store');
+Route::get('create/listar',[FlyController::class,'index'])->name('fly.index');
+Route::get('create/{codefly}',[FlyController::class,'show'])->name('fly.show');
