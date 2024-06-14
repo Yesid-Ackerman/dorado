@@ -9,17 +9,24 @@
 <body>
     <H1 class="text-red">HOLA DESDE CREATE</H1>
     <form action="{{ route('fly.Store') }}" method="POST">
-
+        @csrf
         <h1>FORMULARIO VUELO</h1>
 
         <h1>Codigo de Vuelo</h1>
-        <input type="int" name="codefly">
+        <input type="number" name="codefly">
 
-        <h1>Codigo de Destino</h1>
-        <input type="int">
-
-        <h1>Codigo de Aerolinea</h1>
-        <input type="int">
+        <h1>Destino:</h1>
+        <select name="codedestination">
+            @foreach($destinations as $destination)
+                <option value="{{ $destination->codedestination }}">{{ $destination->codedestination }} - {{ $destination->desc }}</option>
+            @endforeach
+        </select>
+        <h1>Aerolinea</h1>
+        <select name="codeairline">
+            @foreach($airlines as $airline)
+                <option value="{{ $airline->codeairline }}">{{ $airline->codeairline }} - {{ $airline->desc }}</option>
+            @endforeach
+        </select>
 
         <h1>Sala de Abordaje</h1>
         <input type="text" name="salaabordaje">

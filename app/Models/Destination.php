@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Destination extends Model
 {
-    // protected $primarykey = codedestination;
-    use HasFactory;
+    protected $primaryKey = 'codedestination';
+    protected $fillable = ['codedestination']; 
+
+    protected $attributes = [
+        'codedestination' => '0'
+    ];
+    public function flies(){
+        return $this->hasMany('App\Models\Fly');
+    }
 }

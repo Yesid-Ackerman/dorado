@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Passenger extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'codepassenger';
+    protected $fillable = ['codepassenger']; 
+
+    protected $attributes = [
+        'codepassenger' => '0'
+    ];
+    public function flies(){
+        return $this->belongsTo('App\Models\Fly','codefly','codefly');
+    }
 }

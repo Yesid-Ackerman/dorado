@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 return new class extends Migration
 {
@@ -12,10 +13,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('flies', function (Blueprint $table) {
-            $table->string('codefly')->primary();
+            $table->integer('codefly')->primary()->default(0);
             $table->string('codvuelo');
             $table->string('coddestino');
-            $table->string('salaabordaje');
+            $table->string('salaabordaje')->nullable();
             $table->string('horasalida');
             $table->string('horallegada');
 
@@ -26,7 +27,6 @@ return new class extends Migration
             $table->string('codeairline');
             $table->foreign('codeairline')->references('codeairline')->on('airlines')->onDelete('cascade');
 
-            $table->string('photo');
             $table->timestamps();
         });
 

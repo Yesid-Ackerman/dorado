@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('passengers', function (Blueprint $table) {
-            $table->id();
+            $table->string('codepass')->primary();
             $table->string('names');
             $table->string('lnames');
             $table->string('email');
             $table->string('phone');
 
-            $table->string('codefly');
+            $table->integer('codefly');
             $table->foreign('codefly')->references('codefly')->on('flies')->onDelete('cascade');
 
             $table->string('photo');
