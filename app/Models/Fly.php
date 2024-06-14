@@ -7,19 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fly extends Model
 {
-    protected $primaryKey = 'codefly';
-    protected $fillable = ['codefly','codedestination','codeairline','salaabordaje','holasalida', 'horallegada','photo']; 
+    protected $primaryKey = 'id';
+    protected $fillable = ['id','id','id','salaabordaje','holasalida', 'horallegada','photo']; 
+    protected $table = 'flies';
 
     protected $attributes = [
         'codefly' => '0'
     ];
 
-    public function Destination(){
-        return $this->belongsTo('App\Models\Destination','codedestination','codedestination');
+    public function destination(){
+        return $this->belongsTo(Destination::class);
     }
 
     public function airline(){
-        return $this->belongsTo('App\Models\Airline', 'codeairline', 'codeairline');
+        return $this->belongsTo(Airline::class);
     }
 
     public function passenger(){

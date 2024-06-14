@@ -26,7 +26,7 @@
             <tbody>
                 @foreach ($flies as $flie)
                     <tr>
-                        <td>{{$flie->codefly}}</td>
+                        <td>{{$flie->destination->id}}</td>
                         <td>{{$flie->destination->desc}}</td>
                         <td>{{$flie->airline->desc}}</td>
                         <td>{{$flie->salaabordaje}}</td>

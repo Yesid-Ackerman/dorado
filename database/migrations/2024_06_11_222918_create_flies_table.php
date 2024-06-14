@@ -13,19 +13,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('flies', function (Blueprint $table) {
-            $table->integer('codefly')->primary()->default(0);
-            $table->string('codvuelo');
-            $table->string('coddestino');
+            $table->integer('codefly')->primary();
             $table->string('salaabordaje')->nullable();
             $table->string('horasalida');
             $table->string('horallegada');
 
-            $table->string('codedestination');
-            $table->foreign('codedestination')->references('codedestination')->on('destinations')->onDelete('cascade');
+            $table->foreignId('destination_id')->references('id')->on('destinations')->onDelete('cascade');
 
-
-            $table->string('codeairline');
-            $table->foreign('codeairline')->references('codeairline')->on('airlines')->onDelete('cascade');
+            $table->foreignId('airline_id')->references('id')->on('airlines')->onDelete('cascade');
 
             $table->timestamps();
         });

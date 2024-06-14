@@ -12,15 +12,15 @@
         <h1>FORMULARIO VUELO</h1>
 
         <h1>Destino:</h1>
-        <select name="codedestination">
+        <select name="destination_id">
             @foreach($destinations as $destination)
-                <option value="{{ $destination->codedestination }}">{{ $destination->desc }}</option>
+                <option value="{{ $destination->id }}">{{ $destination->desc }}</option>
             @endforeach
         </select>
         <h1>Aerolinea</h1> 
-        <select name="codeairline">
+        <select name="airline_id">
             @foreach($airlines as $airline)
-                <option value="{{ $airline->codeairline }}">{{ $airline->desc }}</option>
+                <option value="{{ $airline->id }}">{{ $airline->desc }}</option>
             @endforeach
         </select>
 

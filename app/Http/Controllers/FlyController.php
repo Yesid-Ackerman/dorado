@@ -15,7 +15,7 @@ class FlyController extends Controller
      */
     public function index()
     {
-        $flies = Fly::with('airline','destination')->orderBy('codefly', 'desc')->get();
+        $flies = Fly::with(['airline','destination'])->orderBy('codefly', 'desc')->get();
         return view('vuelos.listar', compact('flies'));
     }
 
@@ -38,13 +38,13 @@ class FlyController extends Controller
     public function store(Request $request)
     {
         $fly = new Fly();
-        $fly -> codefly = str_pad(mt_rand(0,999999),6,'0', STR_PAD_LEFT);
+        // $fly -> id = str_pad(mt_rand(0,999999),6,'0', STR_PAD_LEFT);
         // $fly -> codefly = $request->codefly;
     
-        $destination = Destination::find($request->codedestination);
+        $destination = Destination::find($request->destination_id);
         $fly->destination()->associate($destination);
     
-        $airline = Airline::find($request->codeairline);
+        $airline = Airline::find($request->airline_id);
         $fly->airline()->associate($airline);
     
         $fly->salaabordaje = $request->salaabordaje;
@@ -59,10 +59,12 @@ class FlyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fly $flie)
+    public function show(int $codefly)
     {
-
+        $flie = Fly::where('codefly',$codefly)->first();
+        $flie -> load(['destination','airline']);
         return view('vuelos.show',compact('flie'));
+        // return response()->json($flie);
     }
 
     /**
