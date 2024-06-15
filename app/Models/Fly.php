@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fly extends Model
 {
+    use HasFactory;
+
     protected $primaryKey = 'codefly';
-    public $incrementing = false; // Desactivar auto-incremento si `codefly` no es auto-incremental
-    protected $keyType = 'int'; // o 'string' si `codefly` es de tipo string
+    public $incrementing = false;
+    protected $keyType = 'integer';
 
     protected $fillable = [
-        'codefly', 'salaabordaje', 'horasalida', 'horallegada', 'destination_id', 'airline_id'
+        'codefly',
+        'salaabordaje',
+        'horasalida',
+        'horallegada',
+        'destination_id',
+        'airline_id',
     ];
 
     // Definir las relaciones si es necesario

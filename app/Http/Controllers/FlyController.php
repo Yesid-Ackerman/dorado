@@ -38,20 +38,22 @@ class FlyController extends Controller
     public function store(Request $request)
     {
         $fly = new Fly();
-        // $fly -> id = str_pad(mt_rand(0,999999),6,'0', STR_PAD_LEFT);
-            
+        $codefly = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+        $fly->codefly = $codefly;
+
         $destination = Destination::find($request->destination_id);
         $fly->destination()->associate($destination);
     
         $airline = Airline::find($request->airline_id);
         $fly->airline()->associate($airline);
-    
+
         $fly->salaabordaje = $request->salaabordaje;
         $fly->horasalida = $request->horasalida;
         $fly->horallegada = $request->horallegada;
-        $fly->save();
     
-        return redirect()->route('fly.index');         
+        $fly->save();
+
+        return redirect()->route('fly.index');
     }
     
 

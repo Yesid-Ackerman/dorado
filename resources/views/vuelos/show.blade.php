@@ -10,13 +10,11 @@
         <h1><i class="fas fa-laptop-code"></i> Detalles del Vuelo</h1>
         <div class="course-info animate__animated animate__fadeInUp">
             <p><strong>Codigo de Vuelo:</strong> {{$flie->codefly}}</p>
-            <p><strong>Destino de Vuelo</strong> {{$flie->destination->id}}</p>
             <p><strong>Destino de Vuelo</strong> {{$flie->destination->desc}}</p>
-            <p><strong>Codigo de Aerolinea</strong> {{$flie->airline->id}}</p>
-            <p><strong>Destino de Vuelo</strong> {{$flie->airline->desc}}</p>
-            <p><strong>Destino de Vuelo</strong> {{$flie->salaabordaje}}</p>
-            <p><strong>Destino de Vuelo</strong> {{$flie->horasalida}}</p>
-            <p><strong>Destino de Vuelo</strong> {{$flie->horallegada}}</p>
+            <p><strong>Aerolinea de Vuelo</strong> {{$flie->airline->desc}}</p>
+            <p><strong>Sala de Abordaje</strong> {{$flie->salaabordaje}}</p>
+            <p><strong>Hora e Partida</strong> {{$flie->horasalida}}</p>
+            <p><strong>Hora de Aterrizaje</strong> {{$flie->horallegada}}</p>
         </div>
     </div>
 </body>
