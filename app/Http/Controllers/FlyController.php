@@ -39,8 +39,7 @@ class FlyController extends Controller
     {
         $fly = new Fly();
         // $fly -> id = str_pad(mt_rand(0,999999),6,'0', STR_PAD_LEFT);
-        // $fly -> codefly = $request->codefly;
-    
+            
         $destination = Destination::find($request->destination_id);
         $fly->destination()->associate($destination);
     
@@ -52,7 +51,7 @@ class FlyController extends Controller
         $fly->horallegada = $request->horallegada;
         $fly->save();
     
-        return $request;
+        return redirect()->route('fly.index');         
     }
     
 
@@ -61,33 +60,65 @@ class FlyController extends Controller
      */
     public function show(int $codefly)
     {
-        $flie = Fly::where('codefly',$codefly)->first();
-        $flie -> load(['destination','airline']);
-        return view('vuelos.show',compact('flie'));
-        // return response()->json($flie);
+        $flie = Fly::where('codefly', $codefly)->first();
+
+        if (!$flie) {
+            return response()->json(['error' => 'Flight not found'], 404);
+        }
+
+        $flie->load(['destination', 'airline']);
+        return view('vuelos.show', compact('flie'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fly $fly)
+    public function edit(int $codefly)
     {
-        //
+        $destinations = Destination::all();
+        $airlines = Airline::all();
+        $fly = Fly::where('codefly', $codefly)->firstOrFail();
+        return view('vuelos.editar', [
+            'destinations' => $destinations,
+            'airlines' => $airlines,
+            'fly' => $fly
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fly $fly)
+    public function update(Request $request, int $codefly)
     {
-        //
-    }
+        
+        $request->validate([
+            'horasalida' => 'required|string|max:255',
+            'horallegada' => 'required|string|max:255',
+        ]);
 
+        
+        $fly = Fly::where('codefly', $codefly)->firstOrFail();
+
+        
+        $fly->update([
+            'horasalida' => $request->input('horasalida'),
+            'horallegada' => $request->input('horallegada'),
+        ]);
+
+        
+        return redirect()->route('fly.index');
+    }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fly $fly)
+    public function destroy($codefly)
     {
-        //
+        // Buscar el vuelo por su código y eliminarlo
+        $fly = Fly::where('codefly', $codefly)->firstOrFail();
+        $fly->delete();
+    
+        // Redirigir a la lista de vuelos con un mensaje de éxito
+        return redirect()->route('fly.index');
     }
+
 }

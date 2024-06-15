@@ -7,19 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fly extends Model
 {
-    protected $primaryKey = 'id';
-    protected $fillable = ['id','id','id','salaabordaje','holasalida', 'horallegada','photo']; 
-    protected $table = 'flies';
+    protected $primaryKey = 'codefly';
+    public $incrementing = false; // Desactivar auto-incremento si `codefly` no es auto-incremental
+    protected $keyType = 'int'; // o 'string' si `codefly` es de tipo string
 
-    protected $attributes = [
-        'codefly' => '0'
+    protected $fillable = [
+        'codefly', 'salaabordaje', 'horasalida', 'horallegada', 'destination_id', 'airline_id'
     ];
 
-    public function destination(){
+    // Definir las relaciones si es necesario
+    public function destination()
+    {
         return $this->belongsTo(Destination::class);
     }
 
-    public function airline(){
+    public function airline()
+    {
         return $this->belongsTo(Airline::class);
     }
 

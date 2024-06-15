@@ -13,4 +13,6 @@ Route::get('create/fly',[FlyController::class,'asociar']);
 Route::post('fly/store', [FlyController::class,'store'])->name('fly.Store');
 Route::get('create/listar',[FlyController::class,'index'])->name('fly.index');
 Route::get('create/{codefly}',[FlyController::class,'show'])->name('fly.show');
-// Route::get('create/editar',[FlyController::class,'']);
+Route::get('create/{codefly}/editar',[FlyController::class,'edit'])->name('fly.edit');
+Route::put('create/{codefly}',[FlyController::class,'update'])->name('fly.update');
+Route::delete('create/{codefly}',[FlyController::class,'destroy'])->name('fly.destroy');

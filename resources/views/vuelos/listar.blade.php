@@ -26,7 +26,7 @@
             <tbody>
                 @foreach ($flies as $flie)
                     <tr>
-                        <td>{{$flie->destination->id}}</td>
+                        <td>{{$flie->codefly}}</td>
                         <td>{{$flie->destination->desc}}</td>
                         <td>{{$flie->airline->desc}}</td>
                         <td>{{$flie->salaabordaje}}</td>
@@ -39,16 +39,20 @@
                             </a>
                         </td>
                         <td>
-                            {{-- <a href="{{route('curso.edit',$curso->id)}}" class="action-button" title="Editar"> --}}
-                                <i class="fas fa-edit"></i>
+                            <a href="{{route('fly.edit',$flie->codefly)}}" class="action-button" title="Editar">
+                                {{-- <i class="fas fa-edit"></i> --}}
+                                <input type="button" value="Editar">
                             </a>
                         </td>
                         <td>
-                            {{-- <form action="{{route('curso.destroy',$curso->id)}}" method="POST" class="delete-form"> --}}
+                      
+                            
+                            <form action="{{ route('fly.destroy', ['codefly' => $flie->codefly]) }}" method="POST" class="delete-form">
                                 @csrf
-                                @method('delete')
-                                <button type="submit" class="action-button delete-button" title="Eliminar">
-                                    <i class="fas fa-trash-alt"></i>
+                                @method('DELETE')
+                                <button type="submit" class="action-button delete-button" value="Eliminar">
+                                    {{-- <i class="fas fa-trash-alt"></i> --}}
+                                    
                                 </button>
                             </form>
                         </td>
