@@ -28,10 +28,10 @@
         <input type="text" name="salaabordaje">
 
         <h1>Hora de Partida</h1>
-        <input type="time" name="horasalida">
+        <input type="time" step="1" name="horasalida">
 
         <h1>Hora de llegada</h1>
-        <input type="time" name="horallegada">
+        <input type="time" step="1" name="horallegada">
 
         <button type="submit">Enviar</button>
 

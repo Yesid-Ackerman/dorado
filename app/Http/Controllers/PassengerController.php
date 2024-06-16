@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fly;
 use App\Models\Passenger;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,12 @@ class PassengerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function asociar()
     {
-        //
+        $flies = Fly::all();
+        return view('pasajeros.create',['flies'=>$flies]) ;
+        
+
     }
 
     /**
@@ -28,14 +32,15 @@ class PassengerController extends Controller
      */
     public function store(Request $request){
 
-        $fly = new Passenger();
-        $fly -> names=$request->names;
-        $fly -> lnames=$request->lnames;
-        $fly -> email=$request->email;
-        $fly -> phone=$request->phone;
-        $fly -> codvuelo=$request->codvuelo;
-        $fly -> photo=$request->photo;
-        $fly -> save();
+        $passenger = new Passenger();
+        $passenger -> dni = $request ->dni;
+        $passenger -> names=$request->names;
+        $passenger -> lnames=$request->lnames;
+        $passenger -> email=$request->email;
+        $passenger -> phone=$request->phone;
+        $passenger -> codefly=$request->codefly;
+        $passenger -> photo=$request->photo;
+        $passenger -> save();
         return view('pasajeros.create');
     }
 
@@ -68,6 +73,8 @@ class PassengerController extends Controller
      */
     public function destroy(Passenger $passenger)
     {
-        //
+        $passenger->delete();
+    
+        return redirect()->back()->with('Pasajero eliminado correctamente.');
     }
 }

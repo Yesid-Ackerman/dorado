@@ -22,7 +22,6 @@ class Fly extends Model
         'airline_id',
     ];
 
-    // Definir las relaciones si es necesario
     public function destination()
     {
         return $this->belongsTo(Destination::class);
@@ -33,8 +32,8 @@ class Fly extends Model
         return $this->belongsTo(Airline::class);
     }
 
-    public function passenger(){
-        return $this->hasMany('App\Models\Passenger');
+    public function passengers(){
+        return $this->hasMany(Passenger::class,'codefly','codefly');
     }
 
 }

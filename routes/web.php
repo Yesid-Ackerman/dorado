@@ -9,10 +9,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//VUELOS\\
 Route::get('create/fly',[FlyController::class,'asociar']);
 Route::post('fly/store', [FlyController::class,'store'])->name('fly.Store');
 Route::get('create/listar',[FlyController::class,'index'])->name('fly.index');
 Route::get('create/{codefly}',[FlyController::class,'show'])->name('fly.show');
 Route::get('create/{codefly}/editar',[FlyController::class,'edit'])->name('fly.edit');
 Route::put('create/{codefly}',[FlyController::class,'update'])->name('fly.update');
-Route::delete('create/{codefly}',[FlyController::class,'destroy'])->name('fly.destroy');
+
+//VUELOS\\
+
+Route::get('pass/create',[PassengerController::class,'asociar']);
+Route::post('pass/store',[PassengerController::class,'store'])->name('pass.Store');
+
+//PASAJEROS-VUELO\\
+Route::get('/fly/{codefly}/pass',[FlyController::class,'flypass'])->name('fly.pass');
+Route::delete('passengers/{passenger}', [PassengerController::class, 'destroy'])->name('passenger.destroy');

@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('passengers', function (Blueprint $table) {
-            $table->string('codepass')->primary();
+            $table->id();
+            $table->integer('dni');
             $table->string('names');
             $table->string('lnames');
             $table->string('email');

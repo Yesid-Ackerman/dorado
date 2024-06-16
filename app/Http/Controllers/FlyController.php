@@ -115,12 +115,16 @@ class FlyController extends Controller
      */
     public function destroy($codefly)
     {
-        // Buscar el vuelo por su código y eliminarlo
+
         $fly = Fly::where('codefly', $codefly)->firstOrFail();
         $fly->delete();
     
-        // Redirigir a la lista de vuelos con un mensaje de éxito
         return redirect()->route('fly.index');
+    }
+    public function flypass($codefly)
+    {
+        $flies = Fly::with('passengers','destination')->where('codefly', $codefly)->firstOrFail();
+        return view('vuelos.pass',['flie'=>$flies]);
     }
 
 }
