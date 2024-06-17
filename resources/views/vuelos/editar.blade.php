@@ -8,34 +8,41 @@
     <form action="{{ route('fly.update', ['codefly' => $fly->codefly]) }}" method="POST">
         @csrf
         @method('PUT')
+
         <div>
-        <h1>Destino</h1>
-        <select id="destination_id" name="id">
-            @foreach($destinations as $destination)
-                <option value="{{ $destination->id }}" {{ $fly->destination_id == $destination->id ? 'selected' : '' }}>{{ $destination->name }}</option>
-            @endforeach
-        </select>
+            <h2>Destino</h2>
+            <select id="destination_id" name="destination_id">
+                @foreach($destinations as $destination)
+                    <option value="{{ $destination->id }}" {{ $fly->destination_id == $destination->id ? 'selected' : '' }}>{{ $destination->desc }}</option>
+                @endforeach
+            </select>
         </div>
+
         <div>
-        <h1>Aerolinea</h1>
-        <select id="airline_id" name="id">
-            @foreach($airlines as $airline)
-                <option value="{{ $airline->id }}" {{ $fly->airline_id == $airline->id ? 'selected' : '' }}>{{ $airline->name }}</option>
-            @endforeach
-        </select>
+            <h2>Aerolínea</h2>
+            <select id="airline_id" name="airline_id">
+                @foreach($airlines as $airline)
+                    <option value="{{ $airline->id }}" {{ $fly->airline_id == $airline->id ? 'selected' : '' }}>{{ $airline->desc }}</option>
+                @endforeach
+            </select>
         </div>
+
         <div>
-            <h1>Sala de Abordaje</h1>
-            <input type="text" id="salaabordaje" name="" value="{{ $fly->salaabordaje }}">
+            <h2>Sala de Abordaje</h2>
+            <input type="text" id="salaabordaje" name="salaabordaje" value="{{ $fly->salaabordaje }}">
         </div>
+
         <div>
-            <h1>Hora de Salida</h1>
+            <h2>Hora de Salida</h2>
             <input type="time" id="horasalida" name="horasalida" value="{{ $fly->horasalida }}">
         </div>
+
         <div>
-            <h1>Hora Llegada</h1>
+            <h2>Hora de Llegada</h2>
             <input type="time" id="horallegada" name="horallegada" value="{{ $fly->horallegada }}">
         </div>
+
+        <br>
         <button type="submit">Actualizar Vuelo</button>
     </form>
 </body>

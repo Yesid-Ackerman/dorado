@@ -8,37 +8,35 @@
 <body>
     <div class="container">
         <h1><i class="fa-solid fa-list"></i> REGISTRO VUELOS</h1>
-
         <table class="courses-table">
             <thead>
                 <tr>
                     <th>Vuelo</th>
                     <th>Destino</th>
-                    <th>Aerolinea</th>
-                    <th>Sala Abordaje</th>
-                    <th>H Partida</th>
-                    <th>H Llegada</th>
+                    <th>Aerolínea</th>
+                    <th>Sala de Abordaje</th>
+                    <th>Hora de Partida</th>
+                    <th>Hora de Llegada</th>
                     <th>Editar</th>
                     <th>Pasajeros</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($flies as $flie)
+                @foreach ($flies as $fly)
                     <tr>
-                        <td>{{$flie->codefly}}</td>
-                        <td>{{$flie->destination->desc}}</td>
-                        <td>{{$flie->airline->desc}}</td>
-                        <td>{{$flie->salaabordaje}}</td>
-                        <td>{{$flie->horasalida}}</td>
-                        <td>{{$flie->horallegada}}</td>
+                        <td>{{ $fly->codefly }}</td>
+                        <td>{{ $fly->destination->desc }}</td>
+                        <td>{{ $fly->airline->desc }}</td>
+                        <td>{{ $fly->salaabordaje }}</td>
+                        <td>{{ $fly->horasalida }}</td>
+                        <td>{{ $fly->horallegada }}</td>
                         <td>
-                            <a href="{{route('fly.edit',$flie->codefly)}}" class="action-button" title="Editar">
-                                {{-- <i class="fas fa-edit"></i> --}}
+                            <a href="{{ route('fly.edit', ['codefly' => $fly->codefly]) }}" class="action-button" title="Editar">
                                 <input type="button" value="Editar">
                             </a>
                         </td>
                         <td>
-                            <a href="{{ route('fly.pass', $flie->codefly) }}" class="action-button" title="Pasajeros">
+                            <a href="{{ route('fly.pass', ['codefly' => $fly->codefly]) }}" class="action-button" title="Pasajeros">
                                 <input type="button" value="Pasajeros">
                             </a>
                         </td>

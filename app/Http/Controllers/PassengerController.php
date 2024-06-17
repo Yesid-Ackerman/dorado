@@ -9,49 +9,40 @@ use Illuminate\Http\Request;
 class PassengerController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function asociar()
     {
         $flies = Fly::all();
-        return view('pasajeros.create',['flies'=>$flies]) ;
-        
-
+        return view('pasajeros.create', ['flies' => $flies]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request){
-
-        $passenger = new Passenger();
-        $passenger -> dni = $request ->dni;
-        $passenger -> names=$request->names;
-        $passenger -> lnames=$request->lnames;
-        $passenger -> email=$request->email;
-        $passenger -> phone=$request->phone;
-        $passenger -> codefly=$request->codefly;
-        $passenger -> photo=$request->photo;
-        $passenger -> save();
-        return view('pasajeros.create');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Passenger $passenger)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'dni' => 'required|string|max:255',
+            'names' => 'required|string|max:255',
+            'lnames' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:255',
+            'codefly' => 'required', 
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+        ]);
+        $passenger = new Passenger();
+        $passenger->dni = $request->dni;
+        $passenger->names = $request->names;
+        $passenger->lnames = $request->lnames;
+        $passenger->email = $request->email;
+        $passenger->phone = $request->phone;
+        $passenger->codefly = $request->codefly;
+        $passenger->photo = $request ->photo;
+        $passenger->save();
+        return redirect()->route('fly.index')->with('success', 'Pasajero creado correctamente.');
+    
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -65,7 +56,7 @@ class PassengerController extends Controller
      */
     public function update(Request $request, Passenger $passenger)
     {
-        //
+        // 
     }
 
     /**
@@ -74,7 +65,6 @@ class PassengerController extends Controller
     public function destroy(Passenger $passenger)
     {
         $passenger->delete();
-    
-        return redirect()->back()->with('Pasajero eliminado correctamente.');
+        return redirect()->back();
     }
 }

@@ -1,44 +1,45 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Crear Pasajero - Formulario de Registro</title>
 </head>
 <body>
-    <h1>Panel de Administracion</h1>
-    <header>
-        <h1>Crear Pasajero-Formulario de Registro</h1>
-    </header>
+    <h1>Panel de Administración</h1>
+    <h2>Crear Pasajero - Formulario de Registro</h2>
     
-    <form action="{{route('pass.Store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('pass.Store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         
-        <h1>Identificacion</h1>
-        <input type="string" name="dni">
+        <h3>Identificación</h3>
+        <input type="text" name="dni">
 
-        <h1>Nombres</h1>
-        <input type="string" name="names">
+        <h3>Nombres</h3>
+        <input type="text" name="names">
 
-        <h1>Apellidos</h1>
-        <input type="string" name="lnames">
+        <h3>Apellidos</h3>
+        <input type="text" name="lnames">
 
-        <h1>E-mail</h1>
+        <h3>E-mail</h3>
         <input type="email" name="email">
 
-        <h1>Telefono</h1>
-        <input type="string" name="phone">
+        <h3>Teléfono</h3>
+        <input type="text" name="phone">
 
-        <h1>Codigo de Vuelo</h1>
+        <h3>Código de Vuelo</h3>
         <select name="codefly">
-               @foreach($flies as $codefly)
-                    <option value="{{ $codefly->codefly }}">{{ $codefly->codefly }}</option>
-                @endforeach
+            @foreach($flies as $fly)
+                <option value="{{ $fly->codefly }}">{{ $fly->codefly }}</option>
+            @endforeach
         </select>
-<br>
-        <h1>Subir Foto</h1>
+
+        <br>
+        <h3>Subir Foto</h3>
         <input type="file" name="photo">
 
+        <br><br>
         <button type="submit">Enviar Registro</button>
 
     </form>

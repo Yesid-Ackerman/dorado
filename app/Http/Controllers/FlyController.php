@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Airline;
 use App\Models\Destination;
 use App\Models\Fly;
-use App\Models\Passenger;
 use Illuminate\Http\Request;
 
 class FlyController extends Controller
@@ -15,21 +14,18 @@ class FlyController extends Controller
      */
     public function index()
     {
-        $flies = Fly::with(['airline','destination'])->orderBy('codefly', 'desc')->get();
+        $flies = Fly::with(['airline', 'destination'])->orderByDesc('codefly')->get();
         return view('vuelos.listar', compact('flies'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function asociar()
+    public function create()
     {
         $destinations = Destination::all();
-        $flies = Fly::all();
-        $passengers = Passenger::all();
         $airlines = Airline::all();
-        return view('vuelos.create',['destinations'=>$destinations,'airlines'=>$airlines,'flies'=>$flies]) ;
-        
+        return view('vuelos.create', compact('destinations', 'airlines'));
     }
 
     /**
@@ -37,94 +33,86 @@ class FlyController extends Controller
      */
     public function store(Request $request)
     {
-        $fly = new Fly();
-        $codefly = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
-        $fly->codefly = $codefly;
+        $request->validate([
+            'destination_id' => 'required',
+            'airline_id' => 'required',
+            'salaabordaje' => 'required|string|max:255',
+            'horasalida' => 'required|string|max:255',
+            'horallegada' => 'required|string|max:255',
+        ]);
 
-        $destination = Destination::find($request->destination_id);
-        $fly->destination()->associate($destination);
-    
-        $airline = Airline::find($request->airline_id);
-        $fly->airline()->associate($airline);
+        $fly = new Fly();
+        $fly->codefly = uniqid();
+
+        $fly->destination()->associate($request->destination_id);
+        $fly->airline()->associate($request->airline_id);
 
         $fly->salaabordaje = $request->salaabordaje;
         $fly->horasalida = $request->horasalida;
         $fly->horallegada = $request->horallegada;
-    
+
         $fly->save();
 
         return redirect()->route('fly.index');
-    }
-    
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $codefly)
-    {
-        $flie = Fly::where('codefly', $codefly)->first();
-
-        if (!$flie) {
-            return response()->json(['error' => 'Flight not found'], 404);
-        }
-
-        $flie->load(['destination', 'airline']);
-        return view('vuelos.show', compact('flie'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(int $codefly)
+    public function edit($codefly)
     {
         $destinations = Destination::all();
         $airlines = Airline::all();
         $fly = Fly::where('codefly', $codefly)->firstOrFail();
-        return view('vuelos.editar', [
-            'destinations' => $destinations,
-            'airlines' => $airlines,
-            'fly' => $fly
-        ]);
+        return view('vuelos.editar', compact('fly', 'destinations', 'airlines'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, int $codefly)
+    public function update(Request $request, $codefly)
     {
-        
         $request->validate([
             'horasalida' => 'required|string|max:255',
             'horallegada' => 'required|string|max:255',
         ]);
 
-        
         $fly = Fly::where('codefly', $codefly)->firstOrFail();
 
-        
         $fly->update([
             'horasalida' => $request->input('horasalida'),
             'horallegada' => $request->input('horallegada'),
         ]);
 
-        
         return redirect()->route('fly.index');
     }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($codefly)
+    {
+        $fly = Fly::with('destination')->where('codefly', $codefly)->firstOrFail();
+        return view('vuelos.show', compact('fly'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($codefly)
     {
-
         $fly = Fly::where('codefly', $codefly)->firstOrFail();
         $fly->delete();
-    
+
         return redirect()->route('fly.index');
     }
-    public function flypass($codefly)
-    {
-        $flies = Fly::with('passengers','destination')->where('codefly', $codefly)->firstOrFail();
-        return view('vuelos.pass',['flie'=>$flies]);
-    }
 
+    /**
+     * Show passengers of a specific flight.
+     */
+    public function flypass($flie)
+    {
+        $flie = Fly::with('passengers', 'destination')->where('codefly', $flie)->firstOrFail();
+        return view('vuelos.pass', compact('flie'));
+    }
 }
