@@ -8,7 +8,7 @@
     <title>Registro de Vuelo</title>
 </head>
 <body>
-    <form action="{{ route('fly.store') }}" method="POST">
+    <form action="{{ route('fly.Store') }}" method="POST">
         @csrf
         <h1>FORMULARIO VUELO</h1>
 

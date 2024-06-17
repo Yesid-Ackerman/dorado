@@ -21,7 +21,7 @@ class FlyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function asociar()
     {
         $destinations = Destination::all();
         $airlines = Airline::all();
@@ -40,22 +40,22 @@ class FlyController extends Controller
             'horasalida' => 'required|string|max:255',
             'horallegada' => 'required|string|max:255',
         ]);
-
+    
         $fly = new Fly();
         $fly->codefly = uniqid();
-
+    
         $fly->destination()->associate($request->destination_id);
         $fly->airline()->associate($request->airline_id);
-
+    
         $fly->salaabordaje = $request->salaabordaje;
         $fly->horasalida = $request->horasalida;
         $fly->horallegada = $request->horallegada;
-
+    
         $fly->save();
-
+    
         return redirect()->route('fly.index');
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -66,7 +66,7 @@ class FlyController extends Controller
         $fly = Fly::where('codefly', $codefly)->firstOrFail();
         return view('vuelos.editar', compact('fly', 'destinations', 'airlines'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
@@ -76,16 +76,17 @@ class FlyController extends Controller
             'horasalida' => 'required|string|max:255',
             'horallegada' => 'required|string|max:255',
         ]);
-
+    
         $fly = Fly::where('codefly', $codefly)->firstOrFail();
-
+    
         $fly->update([
             'horasalida' => $request->input('horasalida'),
             'horallegada' => $request->input('horallegada'),
         ]);
-
+    
         return redirect()->route('fly.index');
     }
+    
 
     /**
      * Display the specified resource.

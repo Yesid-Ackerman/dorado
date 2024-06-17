@@ -6,8 +6,11 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <h1>Panel de Aministracion</h1>
+    </div>
     <div class="container">
-        <h1><i class="fa-solid fa-list"></i> REGISTRO VUELOS</h1>
+    <h1>Gestión de Vuelos</h1>
         <table class="courses-table">
             <thead>
                 <tr>
