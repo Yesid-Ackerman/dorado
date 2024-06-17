@@ -16,15 +16,6 @@ return new class extends Migration
             $table->string('desc');
             $table->timestamps();
         });
-        DB::table('destinations')->insert([
-            ['desc' => 'Armenia'],
-            ['desc' => 'Barranquilla'],
-            ['desc' => 'Cali'],
-            ['desc' => 'Cartagena'],
-            ['desc' => 'Medellin'],
-            ['desc' => 'Santa Marta'],
-            ['desc' => 'San Andres Isla'],
-        ]);
     }
 
     /**
