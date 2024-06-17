@@ -16,6 +16,15 @@ return new class extends Migration
             $table->string('desc',50);
             $table->timestamps();
         });
+
+        DB::table('airlines')->insert([
+            ['desc' => 'AVIANCA'],
+            ['desc' => 'SATENA'],
+            ['desc' => 'WINGO'],
+            ['desc' => 'LATAM'],
+            ['desc' => 'ULTRA AIR'],
+            ['desc' => 'EASYFLY'],
+        ]);
     }
     /**
      * Reverse the migrations.
