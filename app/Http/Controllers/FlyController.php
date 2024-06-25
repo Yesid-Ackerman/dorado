@@ -33,17 +33,9 @@ class FlyController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'destination_id' => 'required',
-            'airline_id' => 'required',
-            'salaabordaje' => 'required|string|max:255',
-            'horasalida' => 'required|string|max:255',
-            'horallegada' => 'required|string|max:255',
-        ]);
     
         $fly = new Fly();
-        $fly->codefly = uniqid();
-    
+        $fly->codefly = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
         $fly->destination()->associate($request->destination_id);
         $fly->airline()->associate($request->airline_id);
     

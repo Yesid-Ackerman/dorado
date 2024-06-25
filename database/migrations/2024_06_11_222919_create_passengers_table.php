@@ -25,15 +25,6 @@ return new class extends Migration
             $table->string('photo');
             $table->timestamps();
         });
-        DB::table('passengers')->insert([
-            'dni' => '1000000001',
-            'names' => 'Sujeto de Prueba',
-            'lnames' => 'Testing Migraciones',
-            'email' => 'testing@migraciones',
-            'phone' => '1234567890',
-            'codefly' => '00001',
-            'photo' => 'C:xampp\htdocs\dorado\src\image.png',
-        ]);
     }
 
     /**

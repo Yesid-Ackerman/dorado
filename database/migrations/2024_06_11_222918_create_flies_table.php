@@ -24,14 +24,7 @@ return new class extends Migration
 
             $table->timestamps();
         });
-        DB::table('flies')->insert([
-            'codefly' => '000001',
-            'salaabordaje' => 'PR0001',
-            'horasalida' => '08:00:00',
-            'horallegada' => '12:00:00',
-            'destination_id' => '1',
-            'airline_id' => '1',
-        ]);
+ 
 
     }
 

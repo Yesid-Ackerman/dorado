@@ -26,13 +26,3 @@ Route::post('pass/store',[PassengerController::class,'store'])->name('pass.Store
 //PASAJEROS-VUELO\\
 Route::get('/fly/{codefly}/pass',[FlyController::class,'flypass'])->name('fly.pass');
 Route::delete('passengers/{passenger}', [PassengerController::class, 'destroy'])->name('passenger.destroy');
-
-//LOGIN - LOGOUT\\
-Route::controller(AuthController::class)->group(function(){
-    Route::get('/','index')->name('view-inicio');
-    Route::get('/login','login')->name('view-login');
-    Route::get('/register','register')->name('view-register');
-    Route::post('/register','store')->name('auth-register');
-    Route::post('/login','store_log')->name('auth-login'); 
-    
-});
