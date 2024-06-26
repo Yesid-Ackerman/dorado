@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// RUTA PRINCIPAL
+Route::get('dashboard',[MainController::class,'home'])->name('dasboard.home');
+
 //VUELOS\\
 Route::get('create/fly',[FlyController::class,'asociar']);
 Route::post('fly/store', [FlyController::class,'store'])->name('fly.Store');
@@ -28,4 +31,3 @@ Route::post('pass/store',[PassengerController::class,'store'])->name('pass.Store
 Route::get('/fly/{codefly}/pass',[FlyController::class,'flypass'])->name('fly.pass');
 Route::delete('passengers/{passenger}', [PassengerController::class, 'destroy'])->name('passenger.destroy');
 
-Route::get('dashboard',[MainController::class,'home'])->name('dasboard.home');
