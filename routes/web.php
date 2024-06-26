@@ -4,6 +4,7 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\FlyController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -26,3 +27,5 @@ Route::post('pass/store',[PassengerController::class,'store'])->name('pass.Store
 //PASAJEROS-VUELO\\
 Route::get('/fly/{codefly}/pass',[FlyController::class,'flypass'])->name('fly.pass');
 Route::delete('passengers/{passenger}', [PassengerController::class, 'destroy'])->name('passenger.destroy');
+
+Route::get('dashboard',[MainController::class,'home'])->name('dasboard.home');
