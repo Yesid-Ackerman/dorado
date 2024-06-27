@@ -43,7 +43,6 @@ class PassengerController extends Controller
         $passenger->email = $request->email;
         $passenger->phone = $request->phone;
         $passenger->codefly = $request->codefly;
-        $passenger->photo = $request ->photo;
         $passenger->save();
         return redirect()->route('fly.index')->with('success', 'Pasajero creado correctamente.');
     
