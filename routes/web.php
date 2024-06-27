@@ -7,15 +7,15 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('main.dashboard');
+});
 
 // RUTA PRINCIPAL
 Route::get('dashboard',[MainController::class,'home'])->name('dasboard.home');
 
 //VUELOS\\
-Route::get('create/fly',[FlyController::class,'asociar']);
+Route::get('create/fly',[FlyController::class,'asociar'])->name('fly.Create');
 Route::post('fly/store', [FlyController::class,'store'])->name('fly.Store');
 Route::get('create/listar',[FlyController::class,'index'])->name('fly.index');
 Route::get('create/{codefly}',[FlyController::class,'show'])->name('fly.show');
@@ -24,8 +24,9 @@ Route::put('create/{codefly}',[FlyController::class,'update'])->name('fly.update
 
 //PASAJEROS\\
 
-Route::get('pass/create',[PassengerController::class,'asociar'])->name('pass.Crr');
+Route::get('pass/create',[PassengerController::class,'asociar'])->name('pass.Create');
 Route::post('pass/store',[PassengerController::class,'store'])->name('pass.Store');
+Route::get('pass/listar', [PassengerController::class,'index'])->name('pass.index');
 
 //PASAJEROS-VUELO\\
 Route::get('/fly/{codefly}/pass',[FlyController::class,'flypass'])->name('fly.pass');

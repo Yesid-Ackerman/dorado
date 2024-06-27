@@ -11,9 +11,14 @@ class PassengerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function index(){
+        $passengers = Passenger::with(['fly'])->orderByDesc('id')->get();
+        return view('pasajeros.listar', compact('passengers'));
+    }
     public function asociar()
     {
         $flies = Fly::all();
+
         return view('pasajeros.create', ['flies' => $flies]);
     }
 

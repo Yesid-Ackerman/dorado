@@ -34,7 +34,7 @@
                     </svg>
                     Vuelos
                 </a>
-                <a href="{{ route('pass.Crr') }}" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                <a href="{{ route('pass.index') }}" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.38 0 2.75.47 3.9 1.32A6.98 6.98 0 0118 18a6.98 6.98 0 01-2.1 5.68A6.98 6.98 0 0112 25a6.98 6.98 0 01-3.9-1.32A6.98 6.98 0 016 18a6.98 6.98 0 012.1-5.68A6.98 6.98 0 0112 11z" />
                     </svg>
@@ -60,14 +60,14 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-gray-800 shadow-lg rounded-lg p-6">
+                    <a href="{{ route('fly.Create') }}" class="block bg-gray-800 shadow-lg rounded-lg p-6 text-center text-white transition duration-300 hover:bg-gray-700">
                         <h3 class="text-xl font-semibold mb-2">Vuelos</h3>
-                        <p class="text-gray-200">Gestiona todos los vuelos.</p>
-                    </div>
-                    <div class="bg-gray-800 shadow-lg rounded-lg p-6">
+                        <p class="text-gray-200">Crea un Vuelo</p>
+                    </a>
+                    <a href="{{ route('pass.Create') }}" class="block bg-gray-800 shadow-lg rounded-lg p-6 text-center text-white transition duration-300 hover:bg-gray-700">
                         <h3 class="text-xl font-semibold mb-2">Pasajeros</h3>
-                        <p class="text-gray-200">Gestiona los pasajeros del vuelo.</p>
-                    </div>
+                        <p class="text-gray-200">Crea un Pasajero</p>
+                    </a>
                     <div class="bg-gray-800 shadow-lg rounded-lg p-6">
                         <h3 class="text-xl font-semibold mb-2">Configuración</h3>
                         <p class="text-gray-200">Proximamente...</p>
