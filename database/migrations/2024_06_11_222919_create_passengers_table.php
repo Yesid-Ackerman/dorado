@@ -21,8 +21,6 @@ return new class extends Migration
 
             $table->integer('codefly');
             $table->foreign('codefly')->references('codefly')->on('flies')->onDelete('cascade');
-
-            $table->string('photo');
             $table->timestamps();
         });
     }

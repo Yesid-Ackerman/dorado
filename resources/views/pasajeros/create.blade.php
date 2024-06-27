@@ -56,12 +56,6 @@
                     @endforeach
                 </select>
             </div>
-
-            <div class="mb-4">
-                <h3 class="text-lg font-semibold mb-2">Subir Foto</h3>
-                <input type="file" name="photo" class="w-full text-gray-200 bg-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
-            </div>
-
             <div class="text-center">
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Enviar Registro</button>
             </div>
