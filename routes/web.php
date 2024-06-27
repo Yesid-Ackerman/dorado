@@ -24,7 +24,7 @@ Route::put('create/{codefly}',[FlyController::class,'update'])->name('fly.update
 
 //PASAJEROS\\
 
-Route::get('pass/create',[PassengerController::class,'asociar']);
+Route::get('pass/create',[PassengerController::class,'asociar'])->name('pass.Crr');
 Route::post('pass/store',[PassengerController::class,'store'])->name('pass.Store');
 
 //PASAJEROS-VUELO\\

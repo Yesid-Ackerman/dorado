@@ -34,7 +34,7 @@
                     </svg>
                     Vuelos
                 </a>
-                <a href="#" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                <a href="{{ route('pass.Crr') }}" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.38 0 2.75.47 3.9 1.32A6.98 6.98 0 0118 18a6.98 6.98 0 01-2.1 5.68A6.98 6.98 0 0112 25a6.98 6.98 0 01-3.9-1.32A6.98 6.98 0 016 18a6.98 6.98 0 012.1-5.68A6.98 6.98 0 0112 11z" />
                     </svg>
