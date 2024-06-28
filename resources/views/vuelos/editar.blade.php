@@ -13,6 +13,9 @@
         }
     </style>
 </head>
+@extends('layouts.lateral')
+
+@section('content')
 <body class="bg-gray-900 text-white p-6">
     <div class="container mx-auto">
         <h1 class="text-4xl font-bold mb-6 text-center tracking-widest">Editar Vuelo</h1>
@@ -65,4 +68,5 @@
         </form>
     </div>
 </body>
+@endsection
 </html>
