@@ -9,7 +9,7 @@ use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('main.dashboard');
+    return view('register');
 });
 
 // RUTA PRINCIPAL

@@ -1,53 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        body {
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
 
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-    </head>
+    <main class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-sm">
+        <h1 class="text-2xl font-bold text-center mb-6">Registro</h1>
+        <form action="{{ route('validar-registro') }}" method="POST">
+            @csrf
+            <div class="mb-4">
+                <label for="userInput" class="block text-sm font-medium mb-2">Nombres</label>
+                <input type="text" id="userInput" name="name" value="{{ old('name') }}" class="w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                @error('name')
+                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <label for="emailInput" class="block text-sm font-medium mb-2">Email</label>
+                <input type="email" id="emailInput" name="email" value="{{ old('email') }}" class="w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" required autocomplete="off">
+                @error('email')
+                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <label for="passwordInput" class="block text-sm font-medium mb-2">Password</label>
+                <input type="password" id="passwordInput" name="password" class="w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                @error('password')
+                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-4">
+                <label for="passwordConfirmInput" class="block text-sm font-medium mb-2">Confirmar Password</label>
+                <input type="password" id="passwordConfirmInput" name="password_confirmation" class="w-full p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                @error('password_confirmation')
+                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                @enderror
+            </div>
+            <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded text-white font-bold">Registrarse</button>
+        </form>
+    </main>
 
-    <body>
-       
-        <main class="container align-center p-5">
-            <form action="{{ route('validar-registro') }}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="exampleInputEmail" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="emailInput" name="email" required autocomplete="disable">
-                </div>
-                <div class="mb-3">
-                    <label for="passwordInput" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="passwordInput" name="password" required>
-                </div>
-                <div class="mb-3">
-                    <label for="userInput" class="form-label" >Nombre</label>
-                    <input type="text" class="form-control" id="userInput" name="name" >
-                </div>
-                <button type="submit" class="btn btn-primary">Registrarse</button>
-            </form>
-        </main>
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
-
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+</body>
 </html>
