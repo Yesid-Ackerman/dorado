@@ -21,7 +21,7 @@
                 <h1 class="text-2xl font-bold tracking-widest">Admin Panel</h1>
             </div>
             <nav class="mt-10">
-                <a href="/" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                <a href="{{ route('dasboard.home') }}" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.38 0 2.75.47 3.9 1.32A6.98 6.98 0 0118 15a6.98 6.98 0 01-2.1 5.68A6.98 6.98 0 0112 22a6.98 6.98 0 01-3.9-1.32A6.98 6.98 0 016 15a6.98 6.98 0 012.1-5.68A6.98 6.98 0 0112 8z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v6m0 0H6.5m5.5 0h5.5M15 2.5l3 3m-3-3l3 3M9 2.5L6 5.5m0 0L9 2.5m0 0H9M9 2.5h.01M12 8c1.38 0 2.75.47 3.9 1.32A6.98 6.98 0 0118 15a6.98 6.98 0 01-2.1 5.68A6.98 6.98 0 0112 22a6.98 6.98 0 01-3.9-1.32A6.98 6.98 0 016 15a6.98 6.98 0 012.1-5.68A6.98 6.98 0 0112 8z" />
