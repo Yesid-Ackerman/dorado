@@ -46,6 +46,12 @@
                     </svg>
                     Configuración
                 </a>
+                <a href="{{ route('admin.users') }}" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4H6a2 2 0 00-2 2v2h6V4zm8 0h-4v4h6V6a2 2 0 00-2-2zm2 8h-6v6h4a2 2 0 002-2v-4zM4 12v4a2 2 0 002 2h4v-6H4z" />
+                    </svg>
+                    Roles
+                </a>
             </nav>
         </div>
         {{-- content --}}
