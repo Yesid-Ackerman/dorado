@@ -43,3 +43,4 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 //ADMIN\\
 Route::get('/admin',[AdminUserController::class,'index'])->name('admin.users');
+Route::get('/users/editar/{id}', [AdminUserController::class, 'edit'])->name('user.edit');
