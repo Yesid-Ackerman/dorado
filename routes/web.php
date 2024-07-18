@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\FlyController;
 use App\Http\Controllers\PassengerController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('register');
+    return view('login');
 });
 
 // RUTA PRINCIPAL
@@ -37,8 +37,10 @@ Route::delete('passengers/{passenger}', [PassengerController::class, 'destroy'])
 Route::view('login',"login")->name('login');
 Route::view('/registro',"register")->name('registro');
 Route::view('/privada',"main/dashboard")->middleware('auth')->name('privada');
-
 Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
 Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
+//ADMIN\\
+Route::get('/admin',[AdminUserController::class,'index'])->name('admin.users');
+Route::get('/users/editar/{id}', [AdminUserController::class, 'edit'])->name('user.edit');
