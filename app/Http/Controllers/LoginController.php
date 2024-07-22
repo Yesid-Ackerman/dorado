@@ -19,31 +19,46 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('register'))
+            return redirect()->route('register')
                         ->withErrors($validator)
                         ->withInput();
         }
 
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
+        try {
+            $user = new User();
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->password = Hash::make($request->input('password'));
+            $user->save();
 
-        Auth::login($user);
-        return redirect(route('privada'));
+            Auth::login($user);
+            return redirect()->route('privada')->with('success', 'Registro exitoso y sesión iniciada.');
+        } catch (\Exception $e) {
+            return redirect()->route('register')->withErrors(['error' => 'Ocurrió un error al registrarse. Inténtalo de nuevo.']);
+        }
     }
 
     public function login(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('login')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
         $credentials = $request->only('email', 'password');
         $remember = $request->has('remember');
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('privada'));
+            return redirect()->intended(route('privada'))->with('success', 'Sesión iniciada correctamente.');
         } else {
-            return redirect(route('login'))->withErrors(['email' => 'Las credenciales no coinciden con nuestros registros.']);
+            return redirect()->route('login')->withErrors(['email' => 'Las credenciales no coinciden con nuestros registros.']);
         }
     }
 
@@ -52,6 +67,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect(route('login'));
+        return redirect()->route('login')->with('success', 'Sesión cerrada correctamente.');
     }
 }
