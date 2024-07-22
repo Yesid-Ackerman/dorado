@@ -39,15 +39,6 @@
                     </svg>
                     Pasajeros
                 </a>
-                <a href="{{ route('admin.users') }}" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke="none" d="M0 0h24v24H0z"/>  <rect x="3" y="3" width="6" height="6" rx="1" />  
-                        <rect x="15" y="15" width="6" height="6" rx="1" />  
-                        <path d="M21 11v-3a2 2 0 0 0 -2 -2h-6l3 3m0 -6l-3 3" />  
-                        <path d="M3 13v3a2 2 0 0 0 2 2h6l-3 -3m0 6l3 -3" />
-                    </svg>
-                    Roles
-                </a>
                 <a href="#" class="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4H6a2 2 0 00-2 2v2h6V4zm8 0h-4v4h6V6a2 2 0 00-2-2zm2 8h-6v6h4a2 2 0 002-2v-4zM4 12v4a2 2 0 002 2h4v-6H4z" />
