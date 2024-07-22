@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\FlyController;
 use App\Http\Controllers\PassengerController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +34,7 @@ Route::get('/fly/{codefly}/pass',[FlyController::class,'flypass'])->name('fly.pa
 Route::delete('passengers/{passenger}', [PassengerController::class, 'destroy'])->name('passenger.destroy');
 
 //LOGIN\\
+<<<<<<< HEAD
 Route::view('login', 'login')->name('login');
 Route::view('/registro', 'register')->name('register');
 Route::view('/privada', 'main/dashboard')->middleware('auth')->name('privada');
@@ -41,4 +42,15 @@ Route::view('/privada', 'main/dashboard')->middleware('auth')->name('privada');
 Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
 Route::post('/inicia-sesion', [LoginController::class, 'login'])->name('inicia-sesion');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+=======
+Route::view('login',"login")->name('login');
+Route::view('/registro',"register")->name('registro');
+Route::view('/privada',"main/dashboard")->middleware('auth')->name('privada');
+Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
+Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+>>>>>>> 7abb2a9dfb5240f828d9e352fe7563102f592241
 
+//ADMIN\\
+Route::get('/admin',[AdminUserController::class,'index'])->name('admin.users');
+Route::get('/users/editar/{id}', [AdminUserController::class, 'edit'])->name('user.edit');

@@ -22,10 +22,17 @@ return new class extends Migration
             $table->timestamps();
         });
         DB::table('users')->insert([
+<<<<<<< HEAD
             'name'=> 'Admin',
             'email'=> 'admin@gmail.com',
             'password'=> bcrypt('123456'),
         ]);
+=======
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('123456'),
+            ]);
+>>>>>>> 7abb2a9dfb5240f828d9e352fe7563102f592241
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
@@ -52,4 +59,5 @@ return new class extends Migration
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
-};
+    
+    };
