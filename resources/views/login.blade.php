@@ -37,7 +37,7 @@
                 <label for="rememberCheck" class="text-sm font-medium">Mantener Sesión Iniciada</label>
             </div>
             <div class="mb-4 text-center">
-                <p>No tienes cuenta? <a href="{{ route('register') }}" class="text-blue-500 hover:underline">Regístrate</a></p>
+                <p>No tienes cuenta? <a href="{{ route('registro') }}" class="text-blue-500 hover:underline">Regístrate</a></p>
             </div>
             <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded text-white font-bold">Acceder</button>
         </form>
